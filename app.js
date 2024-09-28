@@ -107,7 +107,7 @@ function populate() {
         document.querySelector("#display").textContent = "Oops";
     }
     else {
-        document.querySelector("#display").textContent = Math.round(displayValue * 1e9) / 1e9;
+        document.querySelector("#display").textContent = Math.round(displayValue * 1e7) / 1e7;
     }
 }
 
