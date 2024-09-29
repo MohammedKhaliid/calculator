@@ -58,7 +58,7 @@ function getNumbers() {
                 displayed = false;
             }
 
-            if (displayValue < 1e9) {
+            if (displayValue.toString.length < 9) {
                 if (floating > 1) {
 
                     if (displayValue >= 0)
@@ -107,7 +107,25 @@ function populate() {
         document.querySelector("#display").textContent = "Oops";
     }
     else {
-        document.querySelector("#display").textContent = Math.round(displayValue * 1e7) / 1e7;
+        let strValue = displayValue.toString();
+
+        if(strValue.length > 9){
+            if(Math.abs(displayValue) > 1e10 || Math.abs(displayValue) < 1e-10){
+                strValue = displayValue.toExponential(4);
+            }
+            else{
+
+                const decimalIdx = strValue.indexOf('.');
+                if(decimalIdx != -1){
+                    const integerValue = strValue.slice(0, decimalIdx);
+                    const decimalLength = 9 - integerValue.length;
+
+                    strValue = displayValue.toFixed(decimalLength);
+                }
+            }
+        }
+
+        document.querySelector("#display").textContent = strValue;
     }
 }
 

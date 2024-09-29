@@ -35,6 +35,7 @@ body{
     font-size: 77px;
     background-color: lightgray;
     text-align: end;
+    overflow: hidden;
 }
 
 #buttons-container{
